@@ -6,14 +6,14 @@
   >
     <div
       @click.stop
-      class="modal__card flex flex-col items-center border bg-white rounded-md shadow-md relative"
+      class="modal__card relative flex flex-col items-center rounded-md border bg-white shadow-md"
     >
       <slot />
       <button
-        class="modal-close flex items-center justify-center w-8 h-8 m-auto rounded-full font-bold hover:bg-red-400"
+        class="modal-close m-auto flex h-8 w-8 items-center justify-center rounded-full font-bold hover:bg-red-400"
         @click="$emit('close')"
       >
-        <img src="/assets/close.svg" alt="close" class="w-5 h-5" />
+        <img src="/assets/close.svg" alt="close" class="h-5 w-5" />
       </button>
     </div>
   </div>

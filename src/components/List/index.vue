@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center w-8/12 sm:w-container h-container pt-8 pb-7 font-montserrat text-primary bg-white rounded-md shadow-md relative"
+    class="relative flex h-container w-8/12 flex-col items-center rounded-md bg-white pt-8 pb-7 font-montserrat text-primary shadow-md sm:w-container"
   >
     <Date />
     <List />

@@ -1,14 +1,14 @@
 <template>
-  <header class="flex justify-between items-center self-stretch h-24 px-8">
+  <header class="flex h-24 items-center justify-between self-stretch px-8">
     <div
-      class="grid grid-rows-2 grid-flow-col place-content-between items-end w-date h-date"
+      class="grid h-date w-date grid-flow-col grid-rows-2 place-content-between items-end"
     >
       <h2 class="row-span-2 mr-1 text-5xl font-semibold">{{ day }}</h2>
-      <span class="font-semibold uppercase text-sm">{{ month }} </span>
-      <span class="text-sm place-self-start">{{ year }} </span>
+      <span class="text-sm font-semibold uppercase">{{ month }} </span>
+      <span class="place-self-start text-sm">{{ year }} </span>
     </div>
     <div class="h-date">
-      <p class="font-semibold uppercase text-sm">
+      <p class="text-sm font-semibold uppercase">
         {{ weekday }}
       </p>
     </div>

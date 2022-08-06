@@ -1,5 +1,5 @@
 <template>
-  <main class="flex items-center justify-center w-full h-screen bg-clean">
+  <main class="flex h-screen w-full items-center justify-center bg-clean">
     <List />
   </main>
 </template>

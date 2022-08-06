@@ -1,20 +1,20 @@
 <template>
-  <section class="self-stretch h-full w-full p-8 overflow-auto">
+  <section class="h-full w-full self-stretch overflow-auto p-8">
     <div
       v-for="(task, index) in tasks"
       :key="task.title"
       :id="`task-${index}`"
-      class="grid grid-cols-8 place-items-center mb-4 w-full"
+      class="mb-4 grid w-full grid-cols-8 place-items-center"
     >
       <button
         aria-label="check"
-        class="justify-self-start w-5 h-5 rounded-full border-solid border-3 border-gray-300 hover:border-primary transition ease-in duration-300"
+        class="h-5 w-5 justify-self-start rounded-full border-3 border-solid border-gray-300 transition duration-300 ease-in hover:border-primary"
       ></button>
-      <p class="col-span-6 font-semibold justify-self-start cursor-pointer">
+      <p class="col-span-6 cursor-pointer justify-self-start font-semibold">
         {{ task.title }}
       </p>
       <button
-        class="justify-self-end w-4 h-4 opacity-30 hover:opacity-100 transition-opacity ease-in duration-200"
+        class="h-4 w-4 justify-self-end opacity-30 transition-opacity duration-200 ease-in hover:opacity-100"
       >
         <img src="/assets/x.svg" alt="x" />
       </button>
