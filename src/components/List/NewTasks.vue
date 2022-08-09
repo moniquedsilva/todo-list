@@ -6,15 +6,12 @@
     <span class="text-5xl text-buttonText">+</span>
   </button>
   <Modal v-if="showModal" @close="showModal = false">
-    <form
-      class="flex w-full flex-col items-center justify-center gap-y-10 p-10"
-    >
+    <form class="flex w-full flex-col items-center justify-center gap-y-10 p-10">
       <h2 class="text-3xl font-semibold">Tasks</h2>
-      <label class="block w-full">
-        <span class="text-md block font-medium text-primary"
-          >What's the plan for today?</span
-        >
+      <label class="block w-full" for="newTask">
+        <span class="text-md block font-medium text-primary">What's the plan for today?</span>
         <input
+          id="newTask"
           type="text"
           placeholder="add new task"
           required
@@ -37,17 +34,17 @@ import Modal from './Modal.vue'
 export default {
   name: 'NewTasks',
   components: {
-    Modal,
+    Modal
   },
   data() {
     return {
-      showModal: false,
+      showModal: false
     }
   },
   methods: {
     addNewTask() {
       console.log('new')
-    },
-  },
+    }
+  }
 }
 </script>

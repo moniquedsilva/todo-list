@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        clean: '#f7ede2',
+        clean: '#f7ede2'
       },
       colors: {
         primary: '#5F616E',
@@ -11,23 +11,23 @@ module.exports = {
         buttonText: '#44BE8C',
         buttonHover: '#60FFBB',
         lightYellow: '#f7ede2',
-        modalText: '#297053',
+        modalText: '#297053'
       },
       borderWidth: {
-        3: '3px',
+        3: '3px'
       },
       height: {
         container: '530px',
-        date: 'max-content',
+        date: 'max-content'
       },
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif']
       },
       width: {
         container: '380px',
-        date: '95px',
-      },
-    },
+        date: '95px'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 }

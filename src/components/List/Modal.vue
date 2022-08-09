@@ -2,6 +2,8 @@
   <div
     class="modal"
     @click="$emit('close')"
+    @keydown="escapeKeyDown"
+    tabindex="0"
     :class="isVisible && 'modal--visible'"
   >
     <div
@@ -24,7 +26,7 @@ export default {
   name: 'TodoModal',
   data() {
     return {
-      isVisible: false,
+      isVisible: false
     }
   },
   mounted() {
@@ -35,8 +37,8 @@ export default {
   methods: {
     close() {
       this.isVisible = false
-    },
-  },
+    }
+  }
 }
 </script>
 

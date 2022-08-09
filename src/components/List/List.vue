@@ -32,9 +32,9 @@ export default {
         { title: 'Lorem ipsum dolor sit amet' },
         { title: 'Consectetur adipiscing elit' },
         { title: 'Sed do eiusmod tempor incididunt' },
-        { title: 'Irure dolor in reprehenderit' },
-      ],
+        { title: 'Irure dolor in reprehenderit' }
+      ]
     }
-  },
+  }
 }
 </script>

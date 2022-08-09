@@ -36,7 +36,7 @@ export default {
         'Sept',
         'Oct',
         'Nov',
-        'Dec',
+        'Dec'
       ],
       weekdays: [
         'Sunday',
@@ -45,9 +45,9 @@ export default {
         'Wednesday',
         'Thursday',
         'Friday',
-        'Saturday',
+        'Saturday'
       ],
-      weekday: '',
+      weekday: ''
     }
   },
   mounted() {
@@ -55,14 +55,13 @@ export default {
   },
   methods: {
     getCurrentDate() {
-      this.day =
-        this.currentDate.getDate() < 10
-          ? `0${this.currentDate.getDate()}`
-          : this.currentDate.getDate()
+      this.day = this.currentDate.getDate() < 10
+        ? `0${this.currentDate.getDate()}`
+        : this.currentDate.getDate()
       this.month = this.months[this.currentDate.getMonth()]
       this.weekday = this.weekdays[this.currentDate.getDay()]
       this.year = this.currentDate.getFullYear()
-    },
-  },
+    }
+  }
 }
 </script>

@@ -1,20 +1,17 @@
 import { createStore } from 'vuex'
+
 export default createStore({
   state: {
-    tasks: [],
+    tasks: []
   },
   getters: {
-    task: (state) => {
-      return state.tasks
-    },
+    task: (state) => state.tasks,
 
-    getFinishedTasks: (state) => (checked) => {
-      return state.tasks.find((event) => event.checked === checked)
-    },
+    getFinishedTasks: (state) => (checked) =>
+      state.tasks.find((event) => event.checked === checked),
 
-    getUnfinishedTasks: (state) => (unchecked) => {
-      return state.tasks.find((event) => event.unchecked === unchecked)
-    },
+    getUnfinishedTasks: (state) => (unchecked) =>
+      state.tasks.find((event) => event.unchecked === unchecked)
   },
   mutations: {
     ADD_TASK(state, event) {
@@ -26,10 +23,10 @@ export default createStore({
     },
 
     REMOVE_TASK(state, index) {
-      let arr = [...state.tasks]
+      const arr = [...state.tasks]
       arr.splice(index, 1)
       state.tasks = arr
-    },
+    }
   },
   actions: {
     ADD(context, task) {
@@ -42,6 +39,6 @@ export default createStore({
 
     REMOVE(context, index) {
       context.commit('REMOVE_TASK', index)
-    },
-  },
+    }
+  }
 })
