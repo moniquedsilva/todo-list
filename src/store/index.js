@@ -2,16 +2,23 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    tasks: []
+    tasks: [
+      { id: 1, title: 'Task one', checked: false },
+      { id: 2, title: 'Task two', checked: false },
+      { id: 3, title: 'Task three', checked: true },
+      { id: 4, title: 'Task four', checked: false }
+    ]
   },
   getters: {
-    task: (state) => state.tasks,
+    taskLength: ({ tasks }) => tasks.length,
 
-    getFinishedTasks: (state) => (checked) =>
-      state.tasks.find((event) => event.checked === checked),
+    getFinishedTasks: ({ tasks }) => tasks.filter((item) => item.checked),
 
-    getUnfinishedTasks: (state) => (unchecked) =>
-      state.tasks.find((event) => event.unchecked === unchecked)
+    finishedTasksLength: ({ tasks }) => tasks.filter((item) => item.checked).length,
+
+    getUnfinishedTasks: ({ tasks }) => tasks.filter((item) => !item.checked),
+
+    unFinishedTasksLength: ({ tasks }) => tasks.filter((item) => !item.checked).length
   },
   mutations: {
     ADD_TASK(state, event) {
