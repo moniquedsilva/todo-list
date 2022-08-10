@@ -23,18 +23,17 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'ListTodo',
   data() {
     return {
-      hoverButton: false,
-      tasks: [
-        { title: 'Lorem ipsum dolor sit amet' },
-        { title: 'Consectetur adipiscing elit' },
-        { title: 'Sed do eiusmod tempor incididunt' },
-        { title: 'Irure dolor in reprehenderit' }
-      ]
+      hoverButton: false
     }
+  },
+  computed: {
+    ...mapState(['tasks']),
+    ...mapGetters(['finishedTasksLength'])
   }
 }
 </script>
