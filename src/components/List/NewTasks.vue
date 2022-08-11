@@ -12,6 +12,7 @@
         <span class="text-md block font-medium text-primary">What's the plan for today?</span>
         <input
           id="newTask"
+          ref="newTask"
           type="text"
           placeholder="add new task"
           required
@@ -43,7 +44,9 @@ export default {
   },
   methods: {
     addNewTask() {
-      console.log('new')
+      this.$store.commit('ADD', {
+        task: this.$refs.newTask.value
+      })
     }
   }
 }
