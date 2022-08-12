@@ -1,15 +1,17 @@
 import { createStore } from 'vuex'
+import VuexPersistence from 'vuex-persist'
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+})
 
 export default createStore({
   state: {
-    tasks: [
-      { id: 1, title: 'Task one', completed: false },
-      { id: 2, title: 'Task two', completed: false },
-      { id: 3, title: 'Task three', completed: true },
-      { id: 4, title: 'Task four', completed: false }
-    ]
+    tasks: []
   },
   getters: {
+    tasks: ({ tasks }) => tasks,
+
     taskLength: ({ tasks }) => tasks.length,
 
     getFinishedTasks: ({ tasks }) => tasks.filter((item) => item.completed),
@@ -26,7 +28,8 @@ export default createStore({
     },
 
     UPDATE_TASK(state, event) {
-      state.tasks.splice(state.tasks.indexOf(event), 1, event)
+      const index = state.tasks.indexOf(event)
+      state.tasks[index].completed = !state.tasks[index].completed
     },
 
     REMOVE_TASK(state, index) {
@@ -47,5 +50,6 @@ export default createStore({
     REMOVE(context, index) {
       context.commit('REMOVE_TASK', index)
     }
-  }
+  },
+  plugins: [vuexLocal.plugin]
 })
