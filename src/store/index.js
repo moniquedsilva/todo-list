@@ -10,7 +10,7 @@ export default createStore({
     tasks: []
   },
   getters: {
-    tasks: ({ tasks }) => tasks,
+    taskList: ({ tasks }) => tasks,
 
     taskLength: ({ tasks }) => tasks.length,
 
@@ -32,6 +32,12 @@ export default createStore({
       state.tasks[index].completed = !state.tasks[index].completed
     },
 
+    EDIT_TASK(state, title) {
+      const index = state.tasks.indexOf(title)
+      console.log(index, title, event)
+      // state.tasks[index].title = title
+    },
+
     REMOVE_TASK(state, index) {
       const arr = [...state.tasks]
       arr.splice(index, 1)
@@ -45,6 +51,10 @@ export default createStore({
 
     UPDATE(context, task) {
       context.commit('UPDATE_TASK', task)
+    },
+
+    EDIT(context, title) {
+      context.commit('EDIT_TASK', title)
     },
 
     REMOVE(context, index) {
