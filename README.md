@@ -1,4 +1,4 @@
-# todo-list Project
+# todo-list Project, under contruction
 
 ## Project setup
 ```
