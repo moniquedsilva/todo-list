@@ -1,6 +1,10 @@
 <template>
   <section class="h-full w-full self-stretch overflow-auto p-8">
+    <div v-if="taskLength === 0" class="h-full w-full flex items-center justify-center">
+      <p>No tasks today</p>
+    </div>
     <div
+      v-else
       v-for="(task, index) in taskList"
       :key="task.title"
       :id="`task-${index}`"
@@ -45,7 +49,7 @@ export default {
   },
   computed: {
     ...mapState(['tasks']),
-    ...mapGetters(['taskList', 'finishedTasksLength'])
+    ...mapGetters(['taskList', 'taskLength', 'finishedTasksLength'])
   },
   methods: {
     removeTask(index) {
@@ -56,7 +60,6 @@ export default {
     },
     editTask(title) {
       this.$store.dispatch('EDIT', title)
-      console.log('called')
     }
   }
 }
