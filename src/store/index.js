@@ -34,8 +34,7 @@ export default createStore({
 
     EDIT_TASK(state, title) {
       const index = state.tasks.indexOf(title)
-      console.log(index, title, event)
-      // state.tasks[index].title = title
+      state.tasks[index].title = title
     },
 
     REMOVE_TASK(state, index) {
