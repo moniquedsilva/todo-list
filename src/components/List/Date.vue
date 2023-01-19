@@ -1,8 +1,6 @@
 <template>
   <header class="flex h-24 items-center justify-between self-stretch px-8">
-    <div
-      class="grid h-date w-date grid-flow-col grid-rows-2 place-content-between items-end"
-    >
+    <div class="grid h-date w-date grid-flow-col grid-rows-2 place-content-between items-end">
       <h2 class="row-span-2 mr-1 text-5xl font-semibold">{{ day }}</h2>
       <span class="text-sm font-semibold uppercase">{{ month }} </span>
       <span class="place-self-start text-sm">{{ year }} </span>
@@ -38,15 +36,7 @@ export default {
         'Nov',
         'Dec'
       ],
-      weekdays: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
+      weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       weekday: ''
     }
   },
@@ -55,9 +45,10 @@ export default {
   },
   methods: {
     getCurrentDate() {
-      this.day = this.currentDate.getDate() < 10
-        ? `0${this.currentDate.getDate()}`
-        : this.currentDate.getDate()
+      this.day =
+        this.currentDate.getDate() < 10
+          ? `0${this.currentDate.getDate()}`
+          : this.currentDate.getDate()
       this.month = this.months[this.currentDate.getMonth()]
       this.weekday = this.weekdays[this.currentDate.getDay()]
       this.year = this.currentDate.getFullYear()

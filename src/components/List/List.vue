@@ -1,6 +1,6 @@
 <template>
   <section class="h-full w-full self-stretch overflow-auto p-8">
-    <div v-if="taskLength === 0" class="h-full w-full flex items-center justify-center">
+    <div v-if="taskLength === 0" class="flex h-full w-full items-center justify-center">
       <p>No tasks today</p>
     </div>
     <div
@@ -21,13 +21,22 @@
       ></button>
       <input
         :class="[
-          'p-1 hover:bg-gray-100 border-none outline-none focus:outline-none focus:ring focus:ring-gray-300 rounded translate col-span-6 cursor-pointer justify-self-start font-semibold duration-300 ease-in',
+          'translate col-span-6 cursor-pointer justify-self-start rounded border-none p-1 font-semibold outline-none duration-300 ease-in hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300',
           { 'text-gray-400 line-through decoration-2': task.completed }
         ]"
         v-model.lazy="task.title"
-        @focusout="editTask(task.title)"
+        @click="toogleIcons"
       />
       <button
+        v-if="toogleIcon === 'check'"
+        class="h-4 w-4 justify-self-end opacity-30 transition-opacity duration-200 ease-in hover:opacity-100"
+        @click="editTask(task.title)"
+        @keypress.enter="editTask(task.title)"
+      >
+        <img src="/assets/check.svg" alt="check" />
+      </button>
+      <button
+        v-else
         class="h-4 w-4 justify-self-end opacity-30 transition-opacity duration-200 ease-in hover:opacity-100"
         @click="removeTask(index)"
       >
@@ -44,7 +53,8 @@ export default {
   data() {
     return {
       hoverButton: false,
-      title: ''
+      title: '',
+      toogleIcon: 'close'
     }
   },
   computed: {
@@ -58,8 +68,12 @@ export default {
     toggleCompleted(index) {
       this.$store.dispatch('UPDATE', index)
     },
+    toogleIcons() {
+      this.toogleIcon = 'check'
+    },
     editTask(title) {
       this.$store.dispatch('EDIT', title)
+      this.toogleIcon = 'close'
     }
   }
 }
