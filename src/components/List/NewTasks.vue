@@ -57,7 +57,7 @@ export default {
             return this.showModal
           })
           .catch((e) => {
-            console.log(e)
+            console.log(e) // eslint-disable-line
           })
       } else {
         this.$refs.newTask.focus()
