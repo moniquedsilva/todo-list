@@ -28,16 +28,21 @@ export default createStore({
     },
 
     UPDATE_TASK(state, event) {
-      const index = state.tasks.indexOf(event)
-      state.tasks[index].completed = !state.tasks[index].completed
+      const index = state.tasks.findIndex((task) => task.id === event.id)
+      if (index !== -1 && state.tasks[index]) {
+        state.tasks[index].completed = !state.tasks[index].completed
+      }
     },
 
-    EDIT_TASK(state, title) {
-      const index = state.tasks.indexOf(title)
-      state.tasks[index].title = title
+    EDIT_TASK(state, event) {
+      const index = state.tasks.findIndex((task) => task.id === event.id)
+      if (index !== -1 && state.tasks[index]) {
+        state.tasks[index].title = event.title
+      }
     },
 
-    REMOVE_TASK(state, index) {
+    REMOVE_TASK(state, event) {
+      const index = state.tasks.indexOf(event.id)
       const arr = [...state.tasks]
       arr.splice(index, 1)
       state.tasks = arr
@@ -52,12 +57,12 @@ export default createStore({
       context.commit('UPDATE_TASK', task)
     },
 
-    EDIT(context, title) {
-      context.commit('EDIT_TASK', title)
+    EDIT(context, task) {
+      context.commit('EDIT_TASK', task)
     },
 
-    REMOVE(context, index) {
-      context.commit('REMOVE_TASK', index)
+    REMOVE(context, task) {
+      context.commit('REMOVE_TASK', task)
     }
   },
   plugins: [vuexLocal.plugin]

@@ -46,6 +46,7 @@ export default {
     addNewTask() {
       if (this.$refs.newTask.value.length > 0) {
         const data = {
+          id: Math.random().toString(36).substring(2),
           title: this.$refs.newTask.value,
           completed: false
         }

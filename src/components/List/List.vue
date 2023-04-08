@@ -16,7 +16,7 @@
         @click="toggleCompleted(task)"
         :class="[
           'h-5 w-5 justify-self-start rounded-full border-3 border-solid border-gray-400 transition duration-300 ease-in hover:border-gray-400',
-          { 'border-gray-400 bg-gray-400': task.completed }
+          { 'border-[7px] border-gray-400': task.completed }
         ]"
       ></button>
       <input
@@ -25,20 +25,11 @@
           { 'text-gray-400 line-through decoration-2': task.completed }
         ]"
         v-model.lazy="task.title"
-        @click="toogleIcons"
+        @blur="editTask(task)"
       />
       <button
-        v-if="toogleIcon === 'check'"
         class="h-4 w-4 justify-self-end opacity-30 transition-opacity duration-200 ease-in hover:opacity-100"
-        @click="editTask(task.title)"
-        @keypress.enter="editTask(task.title)"
-      >
-        <img src="/assets/check.svg" alt="check" />
-      </button>
-      <button
-        v-else
-        class="h-4 w-4 justify-self-end opacity-30 transition-opacity duration-200 ease-in hover:opacity-100"
-        @click="removeTask(index)"
+        @click="removeTask(task)"
       >
         <img src="/assets/x.svg" alt="x" />
       </button>
@@ -53,8 +44,7 @@ export default {
   data() {
     return {
       hoverButton: false,
-      title: '',
-      toogleIcon: 'close'
+      title: ''
     }
   },
   computed: {
@@ -62,18 +52,19 @@ export default {
     ...mapGetters(['taskList', 'taskLength', 'finishedTasksLength'])
   },
   methods: {
-    removeTask(index) {
-      this.$store.dispatch('REMOVE', index)
+    removeTask(task) {
+      this.$store.dispatch('REMOVE', task)
     },
-    toggleCompleted(index) {
-      this.$store.dispatch('UPDATE', index)
+    toggleCompleted(task) {
+      this.$store.dispatch('UPDATE', task)
     },
-    toogleIcons() {
-      this.toogleIcon = 'check'
-    },
-    editTask(title) {
-      this.$store.dispatch('EDIT', title)
-      this.toogleIcon = 'close'
+    editTask(task) {
+      const updatedTask = {
+        id: task.id,
+        title: task.title,
+        completed: task.completed
+      }
+      this.$store.dispatch('EDIT', updatedTask)
     }
   }
 }
