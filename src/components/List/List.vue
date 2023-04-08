@@ -25,7 +25,7 @@
           { 'text-gray-400 line-through decoration-2': task.completed }
         ]"
         v-model.lazy="task.title"
-        @blur="editTask(task)"
+        @focusout="editTask(task)"
       />
       <button
         class="h-4 w-4 justify-self-end opacity-30 transition-opacity duration-200 ease-in hover:opacity-100"
