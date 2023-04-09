@@ -42,7 +42,7 @@ export default createStore({
     },
 
     REMOVE_TASK(state, event) {
-      const index = state.tasks.indexOf(event.id)
+      const index = state.tasks.findIndex((task) => task.id === event.id)
       const arr = [...state.tasks]
       arr.splice(index, 1)
       state.tasks = arr
