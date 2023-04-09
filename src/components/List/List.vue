@@ -11,27 +11,34 @@
       class="mb-4 grid w-full grid-cols-8 place-items-center"
     >
       <button
-        aria-label="check"
+        id="checkbox"
         :aria-checked="task.completed"
         @click="toggleCompleted(task)"
+        role="checkbox"
         :class="[
           'h-5 w-5 justify-self-start rounded-full border-3 border-solid border-gray-400 transition duration-300 ease-in hover:border-gray-400',
           { 'border-[7px] border-gray-400': task.completed }
         ]"
-      ></button>
-      <input
-        :class="[
-          'translate col-span-6 cursor-pointer justify-self-start rounded border-none p-1 font-semibold outline-none duration-300 ease-in hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300',
-          { 'text-gray-400 line-through decoration-2': task.completed }
-        ]"
-        v-model.lazy="task.title"
-        @focusout="editTask(task)"
-      />
+      >
+        <span class="sr-only">{{ task.completed ? 'Completed' : 'Unfinished' }}</span>
+      </button>
+      <label for="taskTitle" class="col-span-6 justify-self-start">
+        <span class="sr-only">Task title</span>
+        <input
+          id="taskTitle"
+          :class="[
+            'translate cursor-pointer rounded border-none p-1 font-semibold outline-none duration-300 ease-in hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300',
+            { 'text-gray-400 line-through decoration-2': task.completed }
+          ]"
+          v-model.lazy="task.title"
+          @focusout="editTask(task)"
+        />
+      </label>
       <button
         class="h-4 w-4 justify-self-end opacity-30 transition-opacity duration-200 ease-in hover:opacity-100"
         @click="removeTask(task)"
       >
-        <img src="/assets/x.svg" alt="x" />
+        <img src="/assets/x.svg" alt="x" class="h-4 w-4" />
       </button>
     </div>
   </section>

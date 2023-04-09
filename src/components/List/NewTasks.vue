@@ -1,6 +1,6 @@
 <template>
   <button
-    class="absolute -bottom-10 h-20 w-20 rounded-full bg-secondary shadow-md transition duration-300 hover:bg-buttonHover outline-secondary focus:ring-2 focus:ring-secondary"
+    class="absolute -bottom-10 h-20 w-20 rounded-full bg-secondary shadow-md outline-secondary transition duration-300 hover:bg-buttonHover focus:ring-2 focus:ring-secondary"
     @click="showModal = true"
   >
     <span class="text-5xl text-buttonText">+</span>
@@ -21,7 +21,7 @@
       </label>
       <button
         @click.prevent="addNewTask"
-        class="h-12 w-32 cursor-pointer rounded-md bg-secondary p-2 font-bold text-modalText transition duration-300 hover:bg-buttonHover outline-secondary focus:ring-2 focus:ring-secondary"
+        class="h-12 w-32 cursor-pointer rounded-md bg-secondary p-2 font-bold text-modalText outline-secondary transition duration-300 hover:bg-buttonHover focus:ring-2 focus:ring-secondary"
       >
         Save
       </button>
