@@ -31,7 +31,7 @@
             { 'text-gray-400 line-through decoration-2': task.completed }
           ]"
           v-model.lazy="task.title"
-          @focusout="editTask(task)"
+          @change="editTask(task)"
         />
       </label>
       <button
@@ -71,7 +71,9 @@ export default {
         title: task.title,
         completed: task.completed
       }
-      this.$store.dispatch('EDIT', updatedTask)
+      this.$nextTick(() => {
+        this.$store.dispatch('EDIT', updatedTask)
+      })
     }
   }
 }
